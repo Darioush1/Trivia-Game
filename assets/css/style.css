@@ -33,6 +33,11 @@ p.question-text{
     font-family: 'Ruslan Display', cursive;
 }
 
+p.clock{
+    font-size: 22px;
+    font-family: 'Ruslan Display', cursive;
+}
+
 p.answers{
     font-size: 22px;
     font-family: 'Ruslan Display', cursive;
