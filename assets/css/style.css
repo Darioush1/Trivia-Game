@@ -41,4 +41,11 @@ p.clock{
 p.answers{
     font-size: 22px;
     font-family: 'Ruslan Display', cursive;
+    background-color: white;
+    padding: 5px;
+    width: 600px;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid black;
 }
