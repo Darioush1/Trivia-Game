@@ -31,6 +31,13 @@ header{
 p.question-text{
     font-size: 28px;
     font-family: 'Ruslan Display', cursive;
+    background-color: white;
+    padding: 5 10px;
+    width: 90%;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid black;
 }
 
 p.clock{
@@ -56,7 +63,7 @@ p.answers:hover {
     filter: invert(100%);
 }
 
-#gameStartButton{
+.gameStartButton{
 
     background-color: #6d6c6c;
     border: 0px;
@@ -68,7 +75,7 @@ p.answers:hover {
     transition: background-color 0.5s ease;
 }
 
-#gameStartButton:hover{
+.ameStartButton:hover{
 
     background-color: #06a800;
 
