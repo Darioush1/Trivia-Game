@@ -1,31 +1,30 @@
 var correct = true;
 var incorrect = false;
-var answerOptions = '<p class="answers"> Yo!!! you think ready for this???<br><br> <button id="gameStartButton">Yo Lets Do This!</button> </p>';
+var gameStartButton = '<p class="answers" id="startGamePrompt"> Yo!!! you think ready for this???</p>';
+// <br><br> <button id="gameStartButton">Yo Lets Do This!</button> 
 
-
-function nextQuestion () {
+  $('#question-box').append(gameStartButton); 
+  $('.answers').append('<br><br> <button class="gameStartButton" id="startGamePrompt">Yo Lets Do This!</button>')   
+     
+  function nextQuestion ( ) {
     
-    var randomAnswer = Math.Floor(Math.random() * 4) + 1;
+    var randomAnswer = Math.floor(Math.random() * 4) + 1;
     var correctAnswer;
     var wrongAnswer;
 
-    $('.question-box').append('<p class="answers"> </p>');
-    
+    $('#question-box').append('<p class="answers"> </p>');
+    $('#question-box').append('<p class="answers"> </p>');
+    $('#question-box').append('<p class="answers"> </p>');
+    $('#question-box').append('<p class="answers"> </p>');
 };
 
+$('.gameStartButton').on( 'click',  function ( ) {
 
- function gameStart() {
-    nextQuestion();
-};
+    nextQuestion ( );
+    $('#startGamePrompt').remove();
 
+})
 
-$(document).ready( function () {
-
-    $('#question-box').append(answerOptions);    
-
-});
-
-$('#question-box')
 
 
 
