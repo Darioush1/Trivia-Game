@@ -48,6 +48,12 @@ p.answers{
     margin-left: auto;
     margin-right: auto;
     border: 5px solid black;
+    filter: invert(0%);
+    transition: 0.5s ease;
+}
+
+p.answers:hover {
+    filter: invert(100%);
 }
 
 #gameStartButton{
