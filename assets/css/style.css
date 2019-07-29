@@ -49,3 +49,15 @@ p.answers{
     margin-right: auto;
     border: 5px solid black;
 }
+
+#gameStartButton{
+
+    background-color: #6d6c6c;
+    border: 0px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Ruslan Diplay', cursive;
+    font-size: 22px;
+
+}

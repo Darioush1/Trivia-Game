@@ -1,6 +1,6 @@
 var correct = true;
 var incorrect = false;
-var playerGuess = 
+var answerOptions = '<p class="answers"> Yo!!! you think ready for this???<br><br> <button id="gameStartButton">Yo Lets Do This!</button> </p>';
 
 
 function nextQuestion () {
@@ -9,17 +9,25 @@ function nextQuestion () {
     var correctAnswer;
     var wrongAnswer;
 
-    $('.question-box').append(<p class="answers"></p>);
+    $('.question-box').append('<p class="answers"> </p>');
     
 };
 
-function gameStart(){
+
+ function gameStart() {
     nextQuestion();
-}
+};
 
-$(document).ready(
 
-    $('.game-box').append(<p class="answers"> Yo!!! you think ready for this??? <button id='gameStartButton'>Yo Lets Do This!</button> </p>)
-)
+$(document).ready( function () {
+
+    $('#question-box').append(answerOptions);    
+
+});
+
+$('#question-box')
+
+
+
     
 
