@@ -1,6 +1,5 @@
 var correct = true;
 var incorrect = false;
-var gameStartButton = '<p class="answers" id="startGamePrompt"> Yo!!! you think ready for this???</p>';
 var answer = '<p class="answers"></p>';
 var thisQuestion=0;
 
@@ -11,52 +10,47 @@ var questionsQA = [{
     correctAnswer: "President George Washington",
 }]
 
-// <br><br> <button id="gameStartButton">Yo Lets Do This!</button> 
+$('.container').ready( function(){
+    $('#questionBox').hide();
+})
 
-  $('#question-box').append(gameStartButton); 
-  $('.answers').append('<br><br> <button class="gameStartButton" id="startGamePrompt">Yo Lets Do This!</button>') ;
+  
+  $('.answers').on('click', function () {
+      let playerChoice = $(this).attr('question-text');
+      console.log(playerChoice)
+  });
 
-function generateAnswersSquare ( ) {
+// function generateAnswersSquare ( ) {
 
-    for (var i = 0; i < questionsQA[this.thisQuestion].answer.length ; i++) {
+//     for (var i = 0; i < questionsQA[this.questionsQA].answer.length ; i++) {
 
-        $('#question-box').append(
-            '<p class="answers"> <span class="clickAble"></span></p>'
-            );
-        $('.clickAble').html(  +  questionsQA[this.thisQuestion].answer[i] + );
-        $('.question-text').html(questionsQA[this.thisQuestion].question);
-        
-        console.log('this is the thing ' +  questionsQA[this.thisQuestion].answer[i] + ' ' + i);
+//         $('.answers').html(questionsQA[this.questionsQA].answer[i] );
+//         $('#question-box').append('<p class="answers" id=" ' + questionsQA[this.thisQuestion].answer[i] + ' "> </p>' );
+//         $('#' + questionsQA[this.thisQuestion].answer[i] + '').html(" ' + questionsQA[this.thisQuestion].answer[i] + ' ")
+//         $('.question-text').html(questionsQA[this.thisQuestion].question);
 
-    }
-};
+//         console.log('this is the thing ' +  questionsQA[this.thisQuestion].answer[i] + ' ' + i);
+
+//     }
+// };
      
   function nextQuestion ( ) {
     
     var randomAnswer = Math.floor(Math.random() * 4) + 1;
-    var correctAnswer;
+    var correctAnswerDom = questionsQA[this.thisQuestion].correctAnswer;
     var wrongAnswer;
-    generateAnswersSquare();
+   // generateAnswersSquare();
 
-    // $('#question-box').append('<p class="answers"> </p>');
-    // $('#question-box').append('<p class="answers"> </p>');
-    // $('#question-box').append('<p class="answers"> </p>');
-    // $('#question-box').append('<p class="answers"> </p>');
+ 
 };
 
 $('.gameStartButton').on( 'click',  function ( ) {
     nextQuestion ( );
-    $('#startGamePrompt').remove();
+    $('#question-box1').remove();
+    $('#questionBox').show();
+
 })
 
-
-function assignAnswer ( ) {
-    $('.answers').append()
-};
-
-//  "<button class='mainbutton' id='button' callquestion=' " + trivqs[this.currentQ].answers[i] + " '>
-// " + trivqs[this.currentQ].answers[i] + "
-// </button>"
 
 
 

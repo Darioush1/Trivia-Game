@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +9,43 @@
     <link href="https://fonts.googleapis.com/css?family=Faster+One|Ruslan+Display&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
-    <div class= "container">
+    <div class="container">
         <header>
-            <div class="game-title"><h1 id=title>Tivia Yo!</h1></div>
+            <div class="game-title">
+                <h1 id=title>Tivia Yo!</h1>
+            </div>
             <p1 id="howto">The President has been captured by ninjas! Are you a bad enough dude to rescue him?</p1>
         </header>
 
-        <section id="game_box">
-            <div id="question-box">
-                <p class="question-text">Who was the first President of the United States?</p>
-                <p class="clock">You have seconds left duuuuude</p>
-            
-            </div>
-            
+        <section id='game_box'>
+            <div id='question-box1' class='boxStyle'>
+                '<p class="answers" id="startGamePrompt"> <br>
+                    Yo!!! you think ready for this???
+                    <br>
+                    <br>
+                    <button class="gameStartButton">LETS GET THIS BREAD</button>
+                    <br>
+                    <br>
 
-        </section> 
+                </p>'
+            </div>;
+
+
+            <div id="questionBox" class='boxStyle'>
+                <p id="question-text" class='answers'></p>
+                <br>
+                <p id="clock">You have seconds left duuuuude</p>
+                <br>
+            </div>
+
+
+    </div>
 
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 </body>
+
 </html>

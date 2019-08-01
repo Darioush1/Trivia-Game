@@ -18,7 +18,7 @@ header{
     text-shadow: -.5px .5px 1px #bababa;
 }
 
-#question-box{
+.boxStyle{
     background-color: #dd0000;
     padding: 10px;
     text-align: center;
@@ -63,7 +63,21 @@ p.answers:hover {
     filter: invert(100%);
 }
 
-.gameStartButton{
+.gameStartButton {
+    font-size: 22px;
+    font-family: 'Ruslan Display', cursive;
+    background-color: #6d6c6c;
+    padding: 5px;
+    width: 600px;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid black;
+    filter: invert(0%);
+    transition: 0.5s ease;
+}
+
+.gameStartButto{
 
     background-color: #6d6c6c;
     border: 0px;
