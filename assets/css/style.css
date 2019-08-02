@@ -59,6 +59,20 @@ p.answers{
     transition: 0.5s ease;
 }
 
+p.answers1{
+    font-size: 22px;
+    font-family: 'Ruslan Display', cursive;
+    background-color: white;
+    padding: 5px;
+    width: 600px;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid black;
+    filter: invert(0%);
+    transition: 0.5s ease;
+}
+
 p.answers:hover {
     filter: invert(100%);
 }

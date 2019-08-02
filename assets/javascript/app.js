@@ -1,58 +1,62 @@
 var correct = true;
 var incorrect = false;
-var answer = '<p class="answers"></p>';
-var thisQuestion=0;
+// var answer = '<p class="answers"></p>';
+var thisQuestion = 0;
 
-var questionsQA = [{
+var questionsQA = [
+    {
+        question: "Who was the first president?",
+        answer: ["Dragon", "Dragon 2", "President George Washington", "President George Washingtons Dad"],
+        correctAnswer: "President George Washington",
+    }
+]
+// questionsQA[0].answer[i]
 
-    question: "Who was the first president?",
-    answer: ["Dragon", "Dragon 2", "President George Washington", "President George Washingtons Dad"],
-    correctAnswer: "President George Washington",
-}]
-
-$('.container').ready( function(){
+$('.container').ready(function () {
     $('#questionBox').hide();
 })
 
-  
-  $('.answers').on('click', function () {
-      let playerChoice = $(this).attr('question-text');
-      console.log(playerChoice)
-  });
 
-// function generateAnswersSquare ( ) {
+$('.answers').on('click', function () {
+    let playerChoice = $(this).attr('question-text');
+    console.log(playerChoice)
+});
 
-//     for (var i = 0; i < questionsQA[this.questionsQA].answer.length ; i++) {
 
-//         $('.answers').html(questionsQA[this.questionsQA].answer[i] );
-//         $('#question-box').append('<p class="answers" id=" ' + questionsQA[this.thisQuestion].answer[i] + ' "> </p>' );
-//         $('#' + questionsQA[this.thisQuestion].answer[i] + '').html(" ' + questionsQA[this.thisQuestion].answer[i] + ' ")
-//         $('.question-text').html(questionsQA[this.thisQuestion].question);
 
-//         console.log('this is the thing ' +  questionsQA[this.thisQuestion].answer[i] + ' ' + i);
+function nextQuestion() {
 
-//     }
-// };
-     
-  function nextQuestion ( ) {
-    
     var randomAnswer = Math.floor(Math.random() * 4) + 1;
     var correctAnswerDom = questionsQA[this.thisQuestion].correctAnswer;
     var wrongAnswer;
-   // generateAnswersSquare();
+    // generateAnswersSquare();
+  //  generateAnswersText();
 
- 
+
 };
 
-$('.gameStartButton').on( 'click',  function ( ) {
-    nextQuestion ( );
+$('.gameStartButton').on('click', function () {
+    nextQuestion();
     $('#question-box1').remove();
     $('#questionBox').show();
+    generateAnswersText()
 
 })
 
+function generateAnswersText() {
+
+    for (var i = 0; i < questionsQA[i].length; i++) {
+        for(var j = 0;  j< questionsQA[i].answer.length; j++){
+        $('.answers1').html(questionsQA[i].answer[j]);
+        // $('#question-box').append('<p class="answers" id=" ' + questionsQA[this.thisQuestion].answer[i] + ' "> </p>' );
+        //$('#' + questionsQA[this.thisQuestion].answer[i] + '').innerHTML(" ' + questionsQA[this.thisQuestion].answer[i] + ' ")
+      //  $('.question-text').innerHTML(questionsQA[this.thisQuestion].question);
+
+        console.log('this is the thing ' + questionsQA[i].answer[j]);
+        }
+    }
+};
 
 
 
-    
 
