@@ -35,7 +35,7 @@ function generateAnswersText() {
         $('#question-text').text(questionsQA[this.thisQuestion].question);
 
         for (let j = 0; j < questionsQA[this.thisQuestion].answer.length; j++) {
-          console.log(questionsQA[this.thisQuestion].correctAnswer);
+         // console.log(questionsQA[this.thisQuestion].correctAnswer);
             $('.answers' + j).text(questionsQA[this.thisQuestion].answer[j]);
         }
     }
@@ -45,6 +45,7 @@ function timeOut() {
     $('#clock').text('you lost');
     if (sec === 0) {
         console.log('timeOut function hit zero');
+        clearInterval(timeOut)
     }
 };
 
@@ -53,15 +54,28 @@ function nextQuestion() {
     generateAnswersText();
     setInterval(timeOut, 10000);
     setInterval(countdown, 1000);
-
 };
 
 function countdown() {
     sec--;
-    if(sec===0) {
-        clearInterval(sec)
+    if(sec==0) {
+        clearInterval(timeOut);
+        clearInterval(countdown);
     };
     console.log('time left: ' + sec)
+};
+
+function inbetweenQuestionsCorrect ( ){
+    $("#question-text").text('you did not mess up!');
+    $('.answers').hide();
+    clearInterval(timeOut);
+    clearInterval(countdown);
+};
+function inbetweenQuestionsWrong ( ){
+   $("#question-text").text('you did mess up!!! Mom hates you now!!');
+   $('.answers').hide()
+   clearInterval(timeOut);
+   clearInterval(countdown);
 };
 
 function playerGuess() {
@@ -69,10 +83,9 @@ function playerGuess() {
   console.log("playerGuess Function " + playerChoice);
   console.log("playerGuess Function answer " + correctChoice);
     if (playerChoice == correctChoice) {
-        console.log("function: " + playerChoice);
         inbetweenQuestionsCorrect();
         points++;
-        console.log("in function " +points)
+        
 
     } else {
        
@@ -81,12 +94,7 @@ function playerGuess() {
     }
 };
 
-function inbetweenQuestionsCorrect ( ){
-     $(".question-text").text('you did not mess up!')
-};
-function inbetweenQuestionsWrong ( ){
-    $(".question-text").text('you did mess up!!! Mom hates you now!!')
-};
+
 
 $('.gameStartButton').on('click', function () {
 
@@ -97,15 +105,11 @@ $('.gameStartButton').on('click', function () {
     generateAnswersText();
     setInterval(timeOut, 10000);
     setInterval(countdown, 1000);
-
-
 });
 
 $('.answers').on('click', function () {
     playerChoice =  $(this).html();
-    console.log("Player Choice: " + playerChoice);
     playerGuess();
-    console.log('this questions number: ' + thisQuestion);
     thisQuestion++;
 });
 
