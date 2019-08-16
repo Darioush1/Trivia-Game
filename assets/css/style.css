@@ -40,12 +40,32 @@ p#question-text{
     border: 5px solid black;
 }
 
-p.clock{
+p#clock{
     font-size: 22px;
-    font-family: 'Ruslan Display', cursive;
+    font-family: 'Baloo Chettan', cursive;
+    background-color: black;
+    border: 5px solid white;
+    color: #ffffff;
+    width: 700px;
+    margin: auto
+
 }
 
 p.answers{
+    font-size: 22px;
+    font-family: 'Baloo Chettan', cursive;
+    background-color: white;
+    padding: 5px;
+    width: 600px;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid black;
+    filter: invert(0%);
+    transition: 0.5s ease;
+}
+
+p.start{
     font-size: 22px;
     font-family: 'Ruslan Display', cursive;
     background-color: white;
@@ -74,8 +94,8 @@ p.nextQuestionButton{
 }
 
 p.answers1{
-    font-size: 22px;
-    font-family: 'Ruslan Display', cursive;
+    font-size: 22px;   
+    font-family: 'Baloo Chettan', cursive;
     background-color: white;
     padding: 5px;
     width: 600px;
@@ -88,6 +108,10 @@ p.answers1{
 }
 
 p.answers:hover {
+    filter: invert(100%);
+}
+
+.gameStartButton:hover {
     filter: invert(100%);
 }
 
@@ -105,22 +129,4 @@ p.answers:hover {
     transition: 0.5s ease;
 }
 
-.gameStartButto{
 
-    background-color: #6d6c6c;
-    border: 0px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-family: 'Ruslan Diplay', cursive;
-    font-size: 22px;
-    transition: background-color 0.5s ease;
-}
-
-.ameStartButton:hover{
-
-    background-color: #06a800;
-
-}
-
-#gameStartButton:se
