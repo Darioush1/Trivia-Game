@@ -39,12 +39,6 @@ var questionsQA = [
     }
 ];
 
-$('.container').ready(function () {
-    $('#questionBox').hide();
-    $('#resultBox').hide()
-});
-
-
 
 //funtion to make answers append to the page
 function generateAnswersText() {
@@ -71,10 +65,11 @@ function domTimer() {
     sec--;
     timerSpot--;
     console.log(sec)
+    console.log(timerSpot)
 };
 
-var timeOutObj = setInterval(timeOut, 10000);
-var domTimerObj = setInterval(domTimer, 1000);
+//var timeOutObj = setInterval(timeOut, 10000);
+//var domTimerObj = setInterval(domTimer, 1000);
 
 function stopTimers( ) {
     clearInterval(timeOutObj);
@@ -186,3 +181,7 @@ $('.nextQuestionButton').on('click', function () {
 
 
 
+$('.container').ready(function () {
+    $('#questionBox').hide();
+    $('#resultBox').hide()
+});
