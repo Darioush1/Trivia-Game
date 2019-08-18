@@ -1,11 +1,14 @@
 var correct = true;
 var incorrect = false;
+//var timerCount = 30;
 var thisQuestion = 0;
 var playerChoice = ' ';
-var timer;
-var sec = 10;
+//var sec = 10;
 var points = 0;
-var timerSpot = document.getElementById('timerSpot');
+//var timerSpot = document.getElementById('timerSpot');
+//var countStartNumber=30
+//var timeOutObj;
+//var domTimerObj;
 
 var questionsQA = [
     {
@@ -36,7 +39,17 @@ var questionsQA = [
         question: "Who was the best president?",
         answer: ["President Comacho", "Abraham Lincoln", "Bill Paxton", "The Secret Elite"],
         correctAnswer: ["Abraham Lincoln"],
-    }
+    },
+    {
+        question: "space filler",
+        answer: ["space filler"],
+        correctAnswer: "space filler",
+    },
+    {
+        question: "Which president had the biggest bathtub?",
+        answer: ["Kyle", "William Howard Taft", "John F. Kennedy", "Lou Banks"],
+        correctAnswer: "William Howard Taft",
+    },
 ];
 
 
@@ -57,23 +70,28 @@ function generateAnswersText() {
 function timeOut() {
     $('#clock').text('you lost');
     console.log(sec);
+    console.log('time out function')
     inbetweenQuestionsNoTime();
 };
 
 //adjust Dom timer
 function domTimer() {
-    sec--;
-    timerSpot--;
-    console.log(sec)
-    console.log(timerSpot)
+    if(timerCount > 0) {
+        timerCount--;
+        console.log("test",timerCount);
+        $('#clock').html(timerCount);
+    } else if(timerCount === 0) {
+        console.log("TIME UP");
+        stopTimers();
+    }
 };
 
-//var timeOutObj = setInterval(timeOut, 10000);
-//var domTimerObj = setInterval(domTimer, 1000);
+// var timeOutObj = setInterval(timeOut, 10000);
+// var domTimerObj = setInterval(domTimer, 1000);
 
 function stopTimers( ) {
     clearInterval(timeOutObj);
-    clearInterval(domTimerObj);
+    // clearInterval(domTimerObj);
 };
 
 //funtion to move on to next question in array and reset timer
@@ -81,6 +99,7 @@ function nextQuestion() {
     $('.nextQuestionButton').hide();
     $('.answers').show();
     thisQuestion++;
+    //timeOutObj = setInterval(domTimer, 1000)
     generateAnswersText();
    
 };
@@ -119,10 +138,12 @@ function playerGuess() {
         inbetweenQuestionsCorrect();
         points++;
         console.log(points)
-        stopTimers();
-    } else if (sec === 0 ){
-        stopTimers();
-    } else {
+       // stopTimers();
+    }
+  //   else if (sec == 0 ){
+       // stopTimers();
+  //  } 
+    else {
         console.log('correct answer: ' + questionsQA[this.thisQuestion].correctAnswer);
         inbetweenQuestionsWrong();
         console.log(points);
@@ -133,7 +154,7 @@ function playerGuess() {
 //shows a message at the end of the game
 function showResults() {
     $('#resultBox').show();
-    if ( points === 3) {
+    if ( points >= 3) {
         $('.resultMessage').text("You did it! The President has been saved from ninjas! Now Git!")
     } else if ( points === 2) {
         $('.resultMessage').text('You partially did it! You saved half the president! The good half!')
@@ -148,11 +169,11 @@ $('.gameStartButton').on('click', function () {
 
     $('#question-box1').remove();
     $('#questionBox').show();
-    $('#timerSpot').html(sec);
+ //   $('#timerSpot').html(sec);
     generateAnswersText();
-    timeOutObj;
-    domTimerObj;
+ //   timeOutObj = setInterval(domTimer, 1000)
     $('.nextQuestionButton').hide();
+
 });
 
 
@@ -168,16 +189,15 @@ $('.answers').on('click', function () {
 $('.nextQuestionButton').on('click', function () {
     
     console.log('Question array number: ' + thisQuestion)
-    if (thisQuestion == 7) {
+    if (thisQuestion == 6) {
         showResults();
         $('#questionBox').hide();
     } else {
     nextQuestion();
-    timeOutObj;
-    domTimerObj;
-    console.log(sec);
+  //  timeOutObj = setInterval(domTimer, 1000)
     }
 });
+
 
 
 
