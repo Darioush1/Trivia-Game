@@ -1,14 +1,13 @@
 var correct = true;
 var incorrect = false;
-//var timerCount = 30;
 var thisQuestion = 0;
 var playerChoice = ' ';
-//var sec = 10;
+var sec = 0;
+var setSec = 0;
 var points = 0;
-//var timerSpot = document.getElementById('timerSpot');
-//var countStartNumber=30
-//var timeOutObj;
-//var domTimerObj;
+var numberOfQs = 0;
+var timerSpot = document.getElementById('timerSpot');
+
 
 var questionsQA = [
     {
@@ -17,13 +16,13 @@ var questionsQA = [
         correctAnswer: "President George Washington",
     },
     {
-        question: "space filler",
-        answer: ["space filler"],
-        correctAnswer: "space filler",
+        question: "Who was the King of England during the Revolutionary War",
+        answer: ["King George III", "Queen Elizabeth II", "King Harold IV", "King Henry II"],
+        correctAnswer: "King George III",
     },
 
     {
-        question: "Who was the second president?",
+        question: "Where was the ?",
         answer: ["John Adams", "Bill Clinton", "Aohn Jdmas", "President George Washingtons other Dad"],
         correctAnswer: ["John Adams"],
     },
@@ -50,12 +49,18 @@ var questionsQA = [
         answer: ["Kyle", "William Howard Taft", "John F. Kennedy", "Lou Banks"],
         correctAnswer: "William Howard Taft",
     },
+
+    {
+        question: "Who was the King of England during the Revolutionary War",
+        answer: ["King George III", "Queen Elizabeth II", "King Harold IV", "King Henry II"],
+        correctAnswer: "King George III",
+    }
 ];
 
 
 //funtion to make answers append to the page
 function generateAnswersText() {
-
+    timeOutObj = setInterval(domTimer, 1000)
     for (let i = 0; i < questionsQA.length; i++) {
 
         $('#question-text').text(questionsQA[this.thisQuestion].question);
@@ -64,6 +69,7 @@ function generateAnswersText() {
             $('.answers' + j).text(questionsQA[this.thisQuestion].answer[j]);
         }
     }
+    $('#timerSpot').val(sec);
 };
 
 //function to stop the clock at zero
@@ -76,36 +82,34 @@ function timeOut() {
 
 //adjust Dom timer
 function domTimer() {
-    if(timerCount > 0) {
-        timerCount--;
-        console.log("test",timerCount);
-        $('#clock').html(timerCount);
-    } else if(timerCount === 0) {
+    if(sec> 0) {
+        sec--;
+        console.log("test", sec);
+        $('#clock').html(sec);
+    } else if(sec === 0) {
         console.log("TIME UP");
+        timeOut();
         stopTimers();
     }
 };
 
-// var timeOutObj = setInterval(timeOut, 10000);
-// var domTimerObj = setInterval(domTimer, 1000);
-
 function stopTimers( ) {
     clearInterval(timeOutObj);
-    // clearInterval(domTimerObj);
 };
 
 //funtion to move on to next question in array and reset timer
 function nextQuestion() {
+    $('#timerSpot').val(sec);
     $('.nextQuestionButton').hide();
     $('.answers').show();
-    thisQuestion++;
-    //timeOutObj = setInterval(domTimer, 1000)
+    thisQuestion++; 
     generateAnswersText();
    
 };
 
 //function to create timer that will hide answers and present a new slide inbetween the answers
 function inbetweenQuestionsCorrect() {
+    sec = setSec;
     $("#question-text").text('you did not mess up!');
     $('.answers').hide();
     $('.nextQuestionButton').show();
@@ -114,15 +118,19 @@ function inbetweenQuestionsCorrect() {
 
 //function to create a new slide that will show when the answer is wrong
 function inbetweenQuestionsWrong() {
-    $("#question-text").text('you did mess up!!! Mom hates you now!!');
+    sec = setSec;
+    $("#question-text").text('Sorry, you got the wrong answer');
     $('.answers').hide();
     $('.nextQuestionButton').show();
 };
 
 function inbetweenQuestionsNoTime() {
-    $("#question-text").text('Just like that time in middle school when you didn\'t ask out Torry K. you hesistated. You loooose this round!');
+    sec = setSec;
+    $("#question-text").text('Times Up! ');
     $('.answers').hide();
     $('.nextQuestionButton').show();
+ 
+
 };
 
 
@@ -139,10 +147,11 @@ function playerGuess() {
         points++;
         console.log(points)
        // stopTimers();
-    }
-  //   else if (sec == 0 ){
-       // stopTimers();
-  //  } 
+    } 
+    else if (sec == 0 ){
+       stopTimers();
+       inbetweenQuestionsNoTime();
+   } 
     else {
         console.log('correct answer: ' + questionsQA[this.thisQuestion].correctAnswer);
         inbetweenQuestionsWrong();
@@ -155,23 +164,25 @@ function playerGuess() {
 function showResults() {
     $('#resultBox').show();
     if ( points >= 3) {
-        $('.resultMessage').text("You did it! The President has been saved from ninjas! Now Git!")
+        $('.resultMessage').text("You Did Amazing!")
     } else if ( points === 2) {
-        $('.resultMessage').text('You partially did it! You saved half the president! The good half!')
+        $('.resultMessage').text('Not Bad!')
     } else {
-        $('.resultMessage').text('The Ninjas have won, the country its doomed. Farewell friend')
+        $('.resultMessage').text('Better Luck Next Time!')
     }
 };
 
 
 //start the game on click
 $('.gameStartButton').on('click', function () {
+    sec = $('#secInput').val();
+    setSec = $('#secInput').val();
 
     $('#question-box1').remove();
     $('#questionBox').show();
- //   $('#timerSpot').html(sec);
+    $('#timerSpot').val(sec);
     generateAnswersText();
- //   timeOutObj = setInterval(domTimer, 1000)
+    // timeOutObj = setInterval(domTimer, 1000)
     $('.nextQuestionButton').hide();
 
 });
@@ -194,7 +205,6 @@ $('.nextQuestionButton').on('click', function () {
         $('#questionBox').hide();
     } else {
     nextQuestion();
-  //  timeOutObj = setInterval(domTimer, 1000)
     }
 });
 

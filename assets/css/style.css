@@ -1,6 +1,7 @@
 
 body{
-    background-color: black
+    background-color: #0b0c10;
+    margin: 0;
 }
 
 #container{
@@ -8,107 +9,103 @@ body{
 }
 
 header{
-    background-color: #dd0000;
+    background-color: #1f2833;
     padding: 10px;
-    font-family: 'Faster One', cursive;
+    font-family: 'Quicksand';
     text-align: center;
-    font-size: 30px;
-    border: 10px solid #ffffff;
-    text-shadow: -3px 3px #ffffff;
-    text-shadow: -.5px .5px 1px #bababa;
+    border-bottom: 10px solid #66fcf1;
+    color: #ffffff;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.title {
+    font-size: 72px;
+}
+
+.subText{
+    margin-top: 5px;
+    font-size: 12px;
 }
 
 .boxStyle{
-    background-color: #dd0000;
+    background-color: #1f2833;
     padding: 10px;
     text-align: center;
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 960px; 
-    border: 5px solid #ffffff;
+    max-width: 960px; 
+    height: fit-content;
+    border: 5px solid #66fcf1;;
 }
 p#question-text{
     font-size: 28px;
-    font-family: 'Ruslan Display', cursive;
+    font-family: 'Quicksand';
     background-color: white;
     padding: 25px 10px;
     width: 90%;
     align-content: center;
     margin-left: auto;
     margin-right: auto;
-    border: 5px solid black;
+    border: 5px solid #66fcf1;
 }
+
 
 p#clock{
     font-size: 22px;
-    font-family: 'Baloo Chettan', cursive;
-    background-color: black;
-    border: 5px solid white;
-    color: #ffffff;
-    width: 700px;
+    font-family: 'Open Sans';
+    background-color: white;
+    border: 5px solid c5c6c7;
+    color: black;
+    width: 90%;
     margin: auto
 
 }
 
 p.answers{
     font-size: 22px;
-    font-family: 'Baloo Chettan', cursive;
+    font-family: 'Open Sans';
     background-color: white;
     padding: 5px;
-    width: 600px;
+    width: 90%;
     align-content: center;
     margin-left: auto;
     margin-right: auto;
-    border: 5px solid black;
+    border: 5px solid #66fcf1;
     filter: invert(0%);
-    transition: 0.5s ease;
+    transition: 0.8s ease;
 }
 
 p.start{
-    font-size: 22px;
-    font-family: 'Ruslan Display', cursive;
+    font-size: 28px;
+    font-family: 'Quicksand';
     background-color: white;
-    padding: 5px;
-    width: 600px;
+    padding: 25px 10px;
+    width: 90%;
     align-content: center;
     margin-left: auto;
     margin-right: auto;
-    border: 5px solid black;
-    filter: invert(0%);
-    transition: 0.5s ease;
+    border: 5px solid #66fcf1;
 }
 
 p.nextQuestionButton{
     font-size: 22px;
-    font-family: 'Ruslan Display', cursive;
+    font-family: 'Open Sans';
     background-color: white;
     padding: 5px;
-    width: 600px;
+    width: 90%;
     align-content: center;
     margin-left: auto;
     margin-right: auto;
-    border: 5px solid black;
     filter: invert(0%);
-    transition: 0.5s ease;
+    transition: 0.8s ease;
 }
 
-p.answers1{
-    font-size: 22px;   
-    font-family: 'Baloo Chettan', cursive;
-    background-color: white;
-    padding: 5px;
-    width: 600px;
-    align-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid black;
-    filter: invert(0%);
-    transition: 0.5s ease;
-}
 
 p.answers:hover {
     filter: invert(100%);
+    width: 90%;
 }
 
 .gameStartButton:hover {
@@ -117,16 +114,59 @@ p.answers:hover {
 
 .gameStartButton {
     font-size: 22px;
-    font-family: 'Ruslan Display', cursive;
-    background-color: #6d6c6c;
+    font-family: 'Open Sans';
+    background-color: white;
     padding: 5px;
-    width: 600px;
+    width: 90%;
     align-content: center;
     margin-left: auto;
     margin-right: auto;
-    border: 5px solid black;
+    border: 5px solid #66fcf1;
     filter: invert(0%);
-    transition: 0.5s ease;
+    transition: 0.8s ease;
 }
 
+form {
+    font-size: 22px;
+    font-family: 'Open Sans';
+    background-color: white;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    border: #66fcf1 solid 5px;
+}
+
+.input{
+    margin-top: 5px ;
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+input{
+    text-align: center;
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
+    border: 2px solid #1f2833;
+
+}
+
+input:invalid {
+    filter: invert(100%);
+}
+
+/* input [text=type]:valid {
+    background-color: #1f2833;
+    color: #ffffff;
+    transition: 0.3s ease;
+  } */
+
+input:focus {
+    filter: invert (100%);
+    border: 3px solid #66fcf1;
+    transition: 0.3s ease;
+  }
 
