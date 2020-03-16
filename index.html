@@ -25,10 +25,12 @@
                     Enter your desired time per question and how many questions you would like.
                     <br>
                     <form action="">
-                        <div id="input">Seconds Per Question <input class="input" id="secInput" type='number' > </div>
+                        <div class="input">Seconds Per Question</div>
                         <br>
-                        <div id="input">Number Of Questions <input class="input" id='questionInput' type="number"></div>
-                        <div class='subText'>(Up to ten questions)</div>
+                        <input class="input" id="secInput" type='number' >
+                        <br>
+                        <!-- <div id="input">Number Of Questions <input class="input" id='questionInput' type="number"></div> -->
+                        <div class='subText'>90 = Easy 60 = Average 30 = Way Too Hard</div>
                     </form>
                     <br>
                     <button class="gameStartButton">Let's Go!</button>
@@ -41,7 +43,7 @@
 
             <div id="questionBox" class='boxStyle'>
                 <p id="question-text" class='questionText'></p>
-                <p id="clock">You have <span id='timerSpot'> </span> seconds left</p>
+                <div id='timerSpot'> </div>
                 <p class="nextQuestionButton" id="startGamePrompt">Next Question</p>
                 <p class="answers answers0" id="startGamePrompt"></p>
                 <p class="answers answers1" id="startGamePrompt"></p>

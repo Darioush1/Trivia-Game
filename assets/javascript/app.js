@@ -3,6 +3,7 @@ var incorrect = false;
 var thisQuestion = 0;
 var playerChoice = ' ';
 var sec = 0;
+
 var setSec = 0;
 var points = 0;
 var numberOfQs = 0;
@@ -16,38 +17,38 @@ var questionsQA = [
         correctAnswer: "President George Washington",
     },
     {
-        question: "Who was the King of England during the Revolutionary War",
-        answer: ["King George III", "Queen Elizabeth II", "King Harold IV", "King Henry II"],
-        correctAnswer: "King George III",
+        question: "Who is the all time 3-Point leader in the history of the NBA",
+        answer: ["George Hill", "Michael Jordan", "Grant Hill", "Ray Allen"],
+        correctAnswer: "Ray Allen",
     },
 
     {
-        question: "Where was the ?",
-        answer: ["John Adams", "Bill Clinton", "Aohn Jdmas", "President George Washingtons other Dad"],
-        correctAnswer: ["John Adams"],
+        question: "The nickname for a friend group consisting primarly of Frank Sinatra, Sammy Davis Jr., Dean Martin was called the...",
+        answer: ["Shoe Shiners", "A Resonable Bunch", "The Rat Pack", "The Dock Boys"],
+        correctAnswer: ["The Rat Pack"],
     },
 
     {
-        question: "space filler",
-        answer: ["space filler"],
-        correctAnswer: "space filler",
+        question: "The lead singer Foo Fighters was also the _____ for Nirvana ",
+        answer: ["Drummer", 'Lead Guitar', 'Bassist', 'Singer'],
+        correctAnswer: "Drummer",
     },
 
 
     {
-        question: "Who was the best president?",
-        answer: ["President Comacho", "Abraham Lincoln", "Bill Paxton", "The Secret Elite"],
-        correctAnswer: ["Abraham Lincoln"],
+        question: "Which of the following is NOT a programming language",
+        answer: ["Assembly Language", "JQuery", "Python", "Giddle"],
+        correctAnswer: ["Giddle"],
     },
     {
-        question: "space filler",
-        answer: ["space filler"],
-        correctAnswer: "space filler",
+        question: "In cooking a Roux consists of the following",
+        answer: ["Flour & Butter", "Onions, Celery, & Carrots", "Egg & Cream", 'Garlic & Oil'],
+        correctAnswer: "Flour & Butter",
     },
     {
-        question: "Which president had the biggest bathtub?",
-        answer: ["Kyle", "William Howard Taft", "John F. Kennedy", "Lou Banks"],
-        correctAnswer: "William Howard Taft",
+        question: "Krump is a type of ____.",
+        answer: ["Dance", "Football Move", "Drink", "Clothing"],
+        correctAnswer: "Dance",
     },
 
     {
@@ -60,7 +61,9 @@ var questionsQA = [
 
 //funtion to make answers append to the page
 function generateAnswersText() {
+
     timeOutObj = setInterval(domTimer, 1000)
+
     for (let i = 0; i < questionsQA.length; i++) {
 
         $('#question-text').text(questionsQA[this.thisQuestion].question);
@@ -74,7 +77,7 @@ function generateAnswersText() {
 
 //function to stop the clock at zero
 function timeOut() {
-    $('#clock').text('you lost');
+    $('#timerSpot').text('0');
     console.log(sec);
     console.log('time out function')
     inbetweenQuestionsNoTime();
@@ -84,8 +87,7 @@ function timeOut() {
 function domTimer() {
     if(sec> 0) {
         sec--;
-        console.log("test", sec);
-        $('#clock').html(sec);
+        $('#timerSpot').html(sec);
     } else if(sec === 0) {
         console.log("TIME UP");
         timeOut();
@@ -99,10 +101,10 @@ function stopTimers( ) {
 
 //funtion to move on to next question in array and reset timer
 function nextQuestion() {
+    sec = parseInt(sec) + 1;
     $('#timerSpot').val(sec);
     $('.nextQuestionButton').hide();
     $('.answers').show();
-    thisQuestion++; 
     generateAnswersText();
    
 };
@@ -113,6 +115,7 @@ function inbetweenQuestionsCorrect() {
     $("#question-text").text('you did not mess up!');
     $('.answers').hide();
     $('.nextQuestionButton').show();
+    $('.timerSpot').hide();
     
 };
 
@@ -122,6 +125,7 @@ function inbetweenQuestionsWrong() {
     $("#question-text").text('Sorry, you got the wrong answer');
     $('.answers').hide();
     $('.nextQuestionButton').show();
+    $('.timerSpot').hide();
 };
 
 function inbetweenQuestionsNoTime() {
@@ -136,10 +140,10 @@ function inbetweenQuestionsNoTime() {
 
 //function that creates the players choice and holds the events depending on the results
 function playerGuess() {
-
+    stopTimers()
     let correctChoice = questionsQA[this.thisQuestion].correctAnswer;
 
-    if (thisQuestion === 6) {
+    if (thisQuestion === 8) {
         showResults();
         $('#questionBox').hide();
     }  else if (playerChoice == correctChoice) {
@@ -163,19 +167,20 @@ function playerGuess() {
 //shows a message at the end of the game
 function showResults() {
     $('#resultBox').show();
-    if ( points >= 3) {
-        $('.resultMessage').text("You Did Amazing!")
-    } else if ( points === 2) {
-        $('.resultMessage').text('Not Bad!')
+    if ( points >= 6) {
+        $('.resultMessage').text("You Did Amazing! You got " + points + " right")
+    } else if ( points >= 4) {
+        $('.resultMessage').text("Not Bad! You got " + points + " right")
     } else {
-        $('.resultMessage').text('Better Luck Next Time!')
+        $('.resultMessage').text("Better Luck Next Time! You got " + points + " right")
     }
 };
 
 
 //start the game on click
 $('.gameStartButton').on('click', function () {
-    sec = $('#secInput').val();
+    console.log('gameStartButton thisQuestion = ' + thisQuestion )
+    sec = parseInt($('#secInput').val()) + 1;
     setSec = $('#secInput').val();
 
     $('#question-box1').remove();
@@ -200,7 +205,7 @@ $('.answers').on('click', function () {
 $('.nextQuestionButton').on('click', function () {
     
     console.log('Question array number: ' + thisQuestion)
-    if (thisQuestion == 6) {
+    if (thisQuestion == 8) {
         showResults();
         $('#questionBox').hide();
     } else {
